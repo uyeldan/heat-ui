@@ -41,7 +41,7 @@
   `],
   template: `
     <div layout="column" flex layout-align="center center">
-      <div style="width:380px" layout="column" layout-padding> <!-- class="md-whiteframe-2dp" -->
+      <div style="width:380px;min-height:350px" layout="column" layout-padding> <!-- class="md-whiteframe-2dp" -->
         <div layout="column" flex ng-if="vm.page == 0" layout-padding>
           <center><p class="md-title">Welcome to Heat Ledger</p></center>
           <div layout="column" ng-show="vm.isNewInstall">
@@ -116,6 +116,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div  flex layout-padding>
+            <center><p class="md-title">Testnet Pulse</p></center>
+            <transactions-explorer-table-front layout="column" flex style="background:white"></transactions-explorer-table-front>
       </div>
     </div>
   `
