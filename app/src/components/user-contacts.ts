@@ -37,8 +37,10 @@
         <md-menu-item ng-repeat="contact in vm.contacts"
           ng-class="{'active': (contact.accountPublicKey == vm.activePublicKey) }">
           <md-button href="#/messenger/{{contact.accountPublicKey}}">
-            <md-icon md-font-library="material-icons" class="md-avatar">person</md-icon>
-            {{contact.account}}<span ng-show="contact.hasUnreadMessage"><b> YES</b></span>
+            <md-icon md-font-library="material-icons" class="md-avatar">person</md-icon>{{contact.account}}
+            <span ng-show="contact.hasUnreadMessage">
+                <md-icon md-font-library="material-icons" style="color: red;margin-bottom: 25px;">chat</md-icon>
+            </span>
           </md-button>
         </md-menu-item>
       </md-content>

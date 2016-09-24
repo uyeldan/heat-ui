@@ -47,19 +47,12 @@
     }
   `],
   template: `
-<<<<<<< HEAD
-    <div layout="column" flex layout-align="center center">
-      <div style="width:380px;min-height:350px" layout="column" layout-padding> <!-- class="md-whiteframe-2dp" -->
-        <div layout="column" flex ng-if="vm.page == 0" layout-padding>
-          <center><p class="md-title">Welcome to Heat Ledger</p></center>
-=======
     <div layout="column" flex layout-align="start center">
-      <div layout="column" layout-padding class="outer-container"> <!-- class="md-whiteframe-2dp" -->
+      <div style="width:380px;min-height:350px" layout="column" layout-padding class="outer-container"> <!-- class="md-whiteframe-2dp" -->
         <div layout="column" flex ng-if="vm.page == 0">
           <div layout="column" layout-align="start center" layout-padding>
             <img src="assets/heatwallet.png" class="wallet">
           </div>
->>>>>>> 45bb4afa864e629f9b45191b32147ccc7fff6048
           <div layout="column" ng-show="vm.isNewInstall">
             <md-button class="md-raised md-primary" ng-click="vm.gotoPage(1)" flex>Create New Account</md-button>
             <md-button class="md-raised" ng-click="vm.gotoPage(2)" flex>Add Existing Account</md-button>
