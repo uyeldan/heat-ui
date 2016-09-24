@@ -21,19 +21,29 @@
  * SOFTWARE.
  * */
 @Service('storage')
-class StorageService {
+class StorageService extends EventEmitter{
+
+  public static EVENT_PUT = 'put';
+
   public namespace(namespace: string) : Store {
-    return new Store(namespace);
+      return new Store(namespace, this);
   }
+
+  public emitEvent(){
+      this.emit(StorageService.EVENT_PUT);
+  }
+
 }
 
-class Store {
+class Store{
   private prefix: string;
-  constructor(public namespace: string) {
+
+  constructor(public namespace: string, public storage: StorageService) {
     if (!angular.isString(namespace) || !utils.emptyToNull(namespace))
       throw new Error('Illegal argument, namespace must be a non-empty string');
     this.prefix = namespace + ".";
   }
+
 
   public clear() {
     this.forEach((namespacedKey) => { this.remove(namespacedKey) });
@@ -45,6 +55,9 @@ class Store {
 
   public put(path: string, val: any) {
     localStorage.setItem(this.prefix + path, JSON.stringify(val));
+    if(angular.equals(this.namespace, 'contacts.latestTimestamp')){
+       this.storage.emitEvent();
+    }
   }
 
   public get(path: string, defaultValue?: any): any {

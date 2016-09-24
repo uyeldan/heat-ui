@@ -64,6 +64,8 @@ class UserContactsComponent {
               private $location: angular.ILocationService,
               private $rootScope: angular.IRootScopeService,
               storage: StorageService) {
+
+    storage.on(StorageService.EVENT_PUT, () => { this.getContacts() });
     this.lastestTimestampStore = storage.namespace('contacts.latestTimestamp');
 
     if (user.unlocked)
